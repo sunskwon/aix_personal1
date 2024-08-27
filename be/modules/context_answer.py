@@ -7,6 +7,7 @@ import numpy as np
 tokenizer = PreTrainedTokenizerFast.from_pretrained("skt/kogpt2-base-v2",
   bos_token='</s>', eos_token='</s>', unk_token='<unk>',
   pad_token='<pad>', mask_token='<mask>')
+tokenizer.tokenize("안녕하세요. 한국어 GPT-2 입니다.😤:)l^o")
 model = GPT2LMHeadModel.from_pretrained('skt/kogpt2-base-v2')
 
 # BM25용 샘플 문서 및 쿼리
@@ -15,11 +16,11 @@ documents = [
     "유산소 운동과 근력 운동을 병행하면 체중 감소에 도움이 됩니다.",
     "탄수화물은 에너지 공급원으로, 운동 전후에 섭취하는 것이 좋습니다."
 ]
-queries = ["근육 성장"]
-prompt = (
-    "다음 질문에 대해 context의 내용을 바탕으로 대답해주세요. \n\n"
-    "context에 적합한 내용이 없으면 '응답종료'로 대답하세요. \n\n"
-)
+queries = ["키가 크려면?"]
+# prompt = (
+#     "다음 질문에 대해 context의 내용을 바탕으로 대답해주세요. \n\n"
+#     "context에 적합한 내용이 없으면 '응답종료'로 대답하세요. \n\n"
+# )
 
 # BM25 인덱스 구축
 tokenized_docs = [doc.split() for doc in documents]
@@ -35,7 +36,8 @@ best_doc_idx = np.argmax(scores)
 retrieved_document = documents[best_doc_idx]
 
 # KoGPT 모델로 텍스트 생성
-text = f"prompt: {prompt} \n\n context: {retrieved_document} \n\n query: {query}"
+# text = f"prompt: {prompt} \n\n context: {retrieved_document} \n\n query: {query}"
+text = f"{retrieved_document} \n\n {query}"
 input_ids = tokenizer.encode(text, return_tensors='pt')
 
 # 텍스트 생성
@@ -43,7 +45,8 @@ gen_ids = model.generate(
     input_ids,
     max_length=128,
     repetition_penalty=2.0,
-    temperature=0.7, # 샘플링의 창의성 조정
+    do_sample=True,
+    temperature=0.3, # 샘플링의 창의성 조정
     top_p=0.9,       # nucleus sampling
     pad_token_id=tokenizer.pad_token_id,
     eos_token_id=tokenizer.eos_token_id,
@@ -53,4 +56,6 @@ gen_ids = model.generate(
 
 # 응답 디코딩 및 출력
 generated = tokenizer.decode(gen_ids[0], skip_special_tokens=True)
-print("Generated Response:", generated)
+print("Generated Response:", generated.split("."))
+print("Generated Response:", generated.split(".")[0])
+print("Generated Response:", generated.split(".")[1])
