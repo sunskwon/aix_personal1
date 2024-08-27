@@ -1,0 +1,9 @@
+# back-end
+pip install requests
+pip install beautifulsoup4
+pip install lxml
+pip install transformers
+pip install sentencepiece
+pip install protobuf
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+pip install rank_bm25
