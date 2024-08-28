@@ -1,14 +1,16 @@
 import re
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-WHITESPACE_HANDLER = lambda k: re.sub('\s+', ' ', re.sub('\n+', ' ', k.strip()))
-
+# pipeline 생성
 model_name = "csebuetnlp/mT5_multilingual_XLSum"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
+WHITESPACE_HANDLER = lambda k: re.sub('\s+', ' ', re.sub('\n+', ' ', k.strip()))
+
 def art_summary(art_dic):
     
+    # 뉴스 기사의 내용 요약    
     article_text = art_dic['main']
 
     input_ids = tokenizer(

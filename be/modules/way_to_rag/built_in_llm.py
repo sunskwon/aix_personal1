@@ -1,7 +1,7 @@
-import torch
-from transformers import PreTrainedTokenizerFast, GPT2LMHeadModel
-from rank_bm25 import BM25Okapi
 import numpy as np
+import torch
+from rank_bm25 import BM25Okapi
+from transformers import PreTrainedTokenizerFast, GPT2LMHeadModel
 
 # Tokenizer 및 모델 로드
 tokenizer = PreTrainedTokenizerFast.from_pretrained("skt/kogpt2-base-v2",
@@ -17,10 +17,10 @@ documents = [
     "탄수화물은 에너지 공급원으로, 운동 전후에 섭취하는 것이 좋습니다."
 ]
 queries = ["키가 크려면?"]
-# prompt = (
-#     "다음 질문에 대해 context의 내용을 바탕으로 대답해주세요. \n\n"
-#     "context에 적합한 내용이 없으면 '응답종료'로 대답하세요. \n\n"
-# )
+prompt = (
+    "다음 질문에 대해 context의 내용을 바탕으로 대답해주세요. \n\n"
+    "context에 적합한 내용이 없으면 '응답종료'로 대답하세요. \n\n"
+)
 
 # BM25 인덱스 구축
 tokenized_docs = [doc.split() for doc in documents]
