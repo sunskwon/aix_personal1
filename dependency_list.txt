@@ -7,3 +7,15 @@ pip install sentencepiece
 pip install protobuf
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install rank_bm25
+pip install langchain
+pip install -U langchain-community
+pip install sentence-transformers
+pip install faiss-cpu(cuda version에 따라 gpu)
+pip install -U langchain-huggingface
+
+pip install chromadb
+pip install gpt4all
+pip install langchainhub
+pip install pypdf
+pip install chainlit
+

@@ -1,7 +1,7 @@
 from modules import news_crawling
 from modules import summary
 from modules import pick_keyword
-from modules import context_answer
+from modules.way_to_rag import context_answer
 
 art_dic = news_crawling.art_crawl("https://n.news.naver.com/article/005/0001720865?ntype=RANKING")
 
