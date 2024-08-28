@@ -12,7 +12,7 @@ from langchain.chains import RetrievalQA, RetrievalQAWithSourcesChain
 QA_CHAIN_PROMPT = hub.pull("rlm/rag-prompt-mistral")
 LANGCHAIN_TRACING_V2=True
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-LANGCHAIN_API_KEY="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"
+LANGCHAIN_API_KEY=""
 LANGCHAIN_PROJECT="pr-virtual-congregation-16"
 
 #load the LLM
