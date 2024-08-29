@@ -1,9 +1,12 @@
+import torch
 from transformers import pipeline
 
-# pipeline 생성
-classifier = pipeline("ner", model="KoichiYasuoka/roberta-base-korean-upos")
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def pick_keyword(text):
+# pipeline 생성
+classifier = pipeline("ner", model="KoichiYasuoka/roberta-base-korean-upos", device=device)
+
+def pick_noun(text):
     
     # 입력된 문장에서 명사 추출
     result = classifier(text)

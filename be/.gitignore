@@ -2,6 +2,7 @@
 .chainlit
 .files
 MY_FAISS_INDEX
+0.7.0
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,python

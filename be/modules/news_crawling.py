@@ -19,7 +19,7 @@ def all_list(sid):
     url_list = []
     for a in a_list:
         if "href" in a.attrs:
-            if "article" in a["href"]:
+            if "article" in a["href"] and 'comment' not in a["href"]:
                 url_list.append(a["href"])
                 
     return url_list

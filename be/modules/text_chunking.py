@@ -2,7 +2,7 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # pipeline 생성:
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=30)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=80, chunk_overlap=20)
 
 def split_text(data):
     

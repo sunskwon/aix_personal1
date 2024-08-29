@@ -1,0 +1,23 @@
+# back-end
+pip install fastapi
+pip install requests
+pip install beautifulsoup4
+pip install lxml
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+pip install transformers
+pip install sentencepiece
+pip install protobuf
+	(numpy downgrade
+		pip uninstall numpy
+		pip install numpy==1.26.4
+	)
+pip install langchain
+pip install -U langchain-community
+pip install -U langchain-huggingface
+pip install faiss-cpu
+	(if possible(depending on cuda version
+		pip install faiss-gpu
+	)
+pip install krwordrank
+pip install JPype1>=0.7.0
+pip install konlpy
