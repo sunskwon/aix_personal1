@@ -1,12 +1,21 @@
 import random
 from datetime import datetime
 from fastapi import Depends, FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from modules import ext_keyword
 from modules import lang_detect
 from modules import news_crawling
 from modules import rag_answering
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # 허용할 도메인
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def log_request_time(request: Request):
     start_time = datetime.now()
@@ -17,6 +26,24 @@ def log_request_time(request: Request):
     duration = end_time - start_time
     print(f"Request ended at: {end_time}")
     print(f"Request duration: {duration}")
+
+@app.get("/gettest")
+async def test():
+    
+    return {
+        "result": "hi"
+    }
+    
+@app.post("/posttest")
+async def ask_test(urls: list[str], query: str):
+    
+    print(urls)
+    print(query)
+    
+    return {
+        "urls": urls,
+        "query": query
+    }
 
 @app.get("/keyword")
 async def gen_keyword(sid: str):

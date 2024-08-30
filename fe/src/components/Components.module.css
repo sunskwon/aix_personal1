@@ -1,0 +1,105 @@
+.container {
+    width: 50%;
+    min-width: 300px;
+    margin: 5px auto;
+    padding: 5px;
+}
+
+.landscapeBox {
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.selectBox {
+    display: flex;
+    align-items: center;
+}
+
+.selectBox>label {
+    height: 25px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.selectBox>select {
+    height: 25px;
+    border: none;
+    font-size: 16px;
+}
+
+.submitBtn {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+
+    cursor: pointer;
+}
+
+.keywords {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.keywords>button {
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    margin: auto 5px;
+
+    font-size: 16px;
+}
+
+.chat {
+    margin: 10px auto;
+}
+
+.questionBox {
+    display: flex;
+    justify-content: end;
+}
+
+.answerBox {
+    display: flex;
+    justify-content: start;
+}
+
+.questionBox>p {
+    border-radius: 10px;
+    background-color: coral;
+    margin: 5px;
+    padding: 5px;
+    font-size: 14px
+}
+
+.answerBox>p {
+    border-radius: 10px;
+    background-color: darkseagreen;
+    margin: 0;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.formBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.formBox>input {
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-right: 5px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}
